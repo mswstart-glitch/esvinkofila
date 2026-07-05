@@ -38,6 +38,7 @@ Promise.all([
 ]).then(([allQuestions, categoriesData]) => {
   const grid = document.getElementById('catGrid');
   categoriesData.categories.forEach(cat => {
+    if (cat.id === 'MTL') return; // hidden from main UI, data kept intact
     const result = CategoryFilter.getCategoryQuestions(allQuestions, cat.id, categoriesData);
     const specificCount = result.specific.length;
     const poolCount = result.pool.length;
